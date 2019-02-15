@@ -209,6 +209,7 @@ public class Limp {
                     }
                 }
             });
+            this.responseListener = responseListener;
         }
     }
 
