@@ -1,1 +1,2 @@
-include ':app', ':limp'
+include ':app', ':limp-rxjava'
+rootProject.name='ns-limp-rxjava'
