@@ -61,7 +61,6 @@ public class Limp {
         return SINGLE_INSTANCE;
     }
 
-    // Private variables
     private Context context;
     private SharedPreferences sharedPreferencess;
     private WebSocket socket;
@@ -70,24 +69,14 @@ public class Limp {
     private Header header = Jwts.header();
     private onResponseListener responseListener;
 
-    private Observable<Long> heartbeat = Observable.interval(30, TimeUnit.SECONDS);
+    public Observable<Long> heartbeat = Observable.interval(30, TimeUnit.SECONDS);
     private Boolean appActive = true;
 
     private Boolean inited = false;
-    private BehaviorSubject<Boolean> inited$ = BehaviorSubject.create();
+    public BehaviorSubject<Boolean> inited$ = BehaviorSubject.create();
 
     public Boolean authed = false;
     public BehaviorSubject<ResponseArguments> authed$ = BehaviorSubject.create();
-
-//    private String name;
-//    private Long size;
-//    private String type;
-//    private String lastModified;
-//    private int[] content;
-//
-//    private InputStream inputStream;
-//    private OutputStream outputStream;
-//    private ObjectOutputStream objectOutputStream;
 
     private LimpFile limpFile;
     private File UPLOAD_FILE_PATH;
@@ -419,7 +408,7 @@ public class Limp {
         });
     }
 
-    public void logout(final onResponseListener responseListener){
+    public void signout(final onResponseListener responseListener){
         String cachedSid = sharedPreferencess.getString("sid","f00000000000000000000012");
         Map<String, Object> query = new HashMap<>();
         ArrayList<Map<String, Object>> queryList = new ArrayList<>();
