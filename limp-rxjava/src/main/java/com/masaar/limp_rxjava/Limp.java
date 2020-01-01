@@ -316,7 +316,7 @@ public class Limp {
         });
     }
 
-    private String generateAuthHash(CredentialType authVar, String authVal , String password) {
+    public String generateAuthHash(CredentialType authVar, String authVal , String password) {
 
         ArrayList<String> hashArray = new ArrayList<>();
         hashArray.add(authVar.name());
@@ -414,7 +414,7 @@ public class Limp {
         ArrayList<Map<String, Object>> queryList = new ArrayList<>();
         query.put("_id",cachedSid);
         queryList.add(query);
-        CallArguments json = new CallArguments("session/signout",this.authed, queryList,null,context);
+        CallArguments json = new CallArguments("session/signout",true, queryList,null,context);
         call(json, new onResponseListener() {
             @Override
             public void didDisconnect(Observable<Error> error) {
